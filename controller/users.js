@@ -4,6 +4,7 @@ module.exports=function(Product,local,fs,async){
         SetRouting:function(router){
             router.get("/",this.homePage);
             router.get("/submit",this.GetSubmitpage);
+            router.get("/product-compare/:name",this.getCompare);
             router.post("/submit",local.Upload.single("productImage"),this.SubmitProduct);
         },
         homePage:function(req,res){
@@ -37,6 +38,26 @@ module.exports=function(Product,local,fs,async){
             newProduct.save(function(err,msg){
                 res.redirect("/");
             })
+        },
+        getCompare:function(req,res){
+            var name=req.params.name;
+            var Id=name.split("+");
+            async.parallel([
+                function(callback){
+                    Product.findOne({"_id":Id[0]},function(err,result){
+                        callback(err,result);
+                    });
+                },
+                function(callback){
+                    Product.findOne({"_id":Id[1]},function(err,result){
+                        callback(err,result);
+                    });
+                }
+            ],function(err,results){
+                var res1=results[0];
+                var res2=results[1];
+                res.render("Compare-product",{data1:res1,data2:res2});
+            });
         }
     }
 }

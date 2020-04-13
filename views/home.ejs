@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="/css/flaticon.css"/>
     <link rel="stylesheet" href="/css/slicknav.min.css" />
 	<link rel="stylesheet" href="/css/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -25,7 +25,7 @@
 							<span>New Arrivals</span>
 							<h2>denim jackets</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-							<a href="/submit" class="site-btn sb-line">DISCOVER</a>
+							<a href="#latest-section" class="site-btn sb-line">DISCOVER</a>
 						</div>
 					</div>
 					<div class="offer-card text-white">
@@ -42,7 +42,7 @@
 							<span>New Arrivals</span>
 							<h2>denim jackets</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-							<a href="/submit" class="site-btn sb-line">DISCOVER</a>
+							<a href="#latest-section" class="site-btn sb-line">DISCOVER</a>
 						</div>
 					</div>
 					<div class="offer-card text-white">
@@ -57,7 +57,7 @@
 			<div class="slide-num-holder" id="snh-1"></div>
 		</div>
 	</section>
-	<section class="top-letest-product-section">
+	<section class="top-letest-product-section" id="latest-section">
 		<div class="container">
 			<div class="section-title">
 				<h2>LATEST PRODUCTS</h2>
@@ -68,6 +68,10 @@
 					<div class="pi-pic">
 						<img src="data:image/<%=val.ProductImage.contentType%>;base64,<%=val.ProductImage.data.toString('base64')%>" alt="">
 						<div class="pi-links">
+                            <input type="hidden" name="Product-id" class="Product-id" value="<%=val._id%>">
+                            <input type="hidden" name="Product-Name" class="Product-Name" value="<%=val.Name%>">
+                            <input type="hidden" name="Product-Description" class="Product-Description" value="<%=val.Description%>">
+                            <input type="hidden" name="Product-Price" class="Product-Price" value="<%=val.Price%>">
 							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO COMPARE</span></a>
 						</div>
 					</div>
@@ -87,6 +91,8 @@
 	<script src="/js/owl.carousel.min.js"></script>
 	<script src="/js/jquery.nicescroll.min.js"></script>
 	<script src="/js/jquery-ui.min.js"></script>
-	<script src="/js/main.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/product.js"></script>
+    </script>
 	</body>
 </html>
