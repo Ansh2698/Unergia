@@ -13,10 +13,16 @@ module.exports=function(Product,local,fs,async){
                     Product.find({},function(err,result){
                         callback(err,result);
                     })
+                },
+                function(callback){
+                    Product.find({}).sort({$natural:-1}).limit(2).exec(function(err,result){
+                        callback(err,result);
+                    })
                 }
             ],function(err,results){
                 var res1=results[0];
-                res.render("home",{data:res1});
+                var res2=results[1];
+                res.render("home",{data:res1,data1:res2});
             })
         },
         GetSubmitpage:function(req,res){
