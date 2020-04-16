@@ -3,6 +3,7 @@ module.exports=function(Product,local,fs,async){
     return{
         SetRouting:function(router){
             router.get("/",this.homePage);
+            router.get("/submit",this.GetSubmitpage);
             router.get("/product-compare/:name",this.getCompare);
         },
         homePage:function(req,res){
@@ -22,6 +23,9 @@ module.exports=function(Product,local,fs,async){
                 var res2=results[1];
                 res.render("home",{data:res1,data1:res2});
             })
+        },
+        GetSubmitpage:function(req,res){
+            return res.render("submit");
         },
         getCompare:function(req,res){
             var name=req.params.name;
